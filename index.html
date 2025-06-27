@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SEE GPA Slot Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    h1 {
+      color: #00aaff;
+    }
+
+    .container {
+      background-color: #e0e0e0;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 90%;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result {
+      font-size: 24px;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+
+    .badge {
+      background-color: green;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SEE Board</h1>
+  <h2>Class 10 : Results 2081</h2>
+
+  <div class="container">
+    <div class="badge">SEE Result :: 2081</div>
+    <br/>
+    <input type="text" id="symbol" placeholder="Symbol Number"><br>
+    <input type="text" id="dob" placeholder="Date of Birth (DDMMYYYY)"><br>
+    <button onclick="generateGPA()">Submit</button>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    function generateGPA() {
+      const gpaValues = [0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0];
+      const randomIndex = Math.floor(Math.random() * gpaValues.length);
+      const gpa = gpaValues[randomIndex].toFixed(2);
+
+      document.getElementById('result').innerHTML = `Your GPA is: <span style="color:blue;">${gpa} 🎉</span>`;
+    }
+  </script>
+
+</body>
+</html>
