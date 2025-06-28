@@ -70,6 +70,13 @@
       <input type="text" id="phone" placeholder="Nomor WhatsApp"><br>
       <button type="submit" class="btn-blue">Submit</button>
     </form>
+<h5 style="margin-bottom: 20px;">Informasi lebih lengkap:</h5>
+
+<a href="https://wa.me/6281234567890" target="_blank">
+  <button style="padding:10px 18px; font-size:16px; background-color:green; color:white; border:none; border-radius:5px;">
+    WhatsApp
+  </button>
+</a>
 
     <div id="result" class="result"></div>
   </div>
@@ -85,20 +92,38 @@
       }
 
       // Prediksi Gacor Game Acak
-      const games = [
-         "Mahjong Wins 3, Piramid Bonanza, Starlight Princess, Gates Of Gatot Kaca 1000, Lucky Tiger",
-         "Lucky Neo, Wild Bandito, Mahjong Ways, Wild Bounty Showdown, Fortune Gods"
-	 "Mahjong Princess, Mining Bonanza, Lucky Fortune"
-	  "Win Win Neko, Roma II, Super Fortune
+  const games = [
+    "Mahjong Wins 3", "Piramid Bonanza", "Starlight Princess", "Gates Of Gatot Kaca 1000", "Lucky Tiger",
+    "Lucky Neo", "Wild Bandito", "Mahjong Ways", "Wild Bounty Showdown", "Fortune Gods",
+    "Mahjong Princess", "Mining Bonanza", "Lucky Fortune",
+    "Win Win Neko", "Roma II", "Super Fortune"
+  ];
 
-
-      ];
-      const randomGame = games[Math.floor(Math.random() * games.length)];
-
-      document.getElementById("result").innerHTML =
-        `🔮 Halo <b>${username}</b>, prediksi game gacor untukmu hari ini: <br><span style="color:blue;">${randomGame}</span>`;
+  function generateIndexFromText(text) {
+    let total = 0;
+    for (let i = 0; i < text.length; i++) {
+      total += text.charCodeAt(i);
     }
-  </script>
+    return total % games.length;
+  }
+
+  function submitForm() {
+    const username = document.getElementById("username").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if (username === "" || phone === "") {
+      document.getElementById("result").innerHTML = "❗ Mohon isi semua data.";
+      return;
+    }
+
+    const inputKey = username + phone;
+    const index = generateIndexFromText(inputKey);
+    const selectedGame = games[index];
+
+    document.getElementById("result").innerHTML =
+      `🔮 Halo <b>${username}</b>, Prediksi game gacor untukmu hari ini: <br><span style="color:blue;">🎰 ${selectedGame}</span>`;
+  }
+</script>
 
 </body>
 </html>
