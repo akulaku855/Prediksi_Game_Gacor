@@ -2,47 +2,54 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prediksi Game Gacor</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f4;
-      text-align: center;
-      padding-top: 30px;
-    }
-
-    h1 {
-      color: dodgerblue;
-      font-weight: 700;
+      background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
 
     .container {
-      background-color: #e0e0e0;
-      max-width: 400px;
-      margin: auto;
-      padding: 20px;
+      background-color: #fff;
+      width: 100%;
+      max-width: 500px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 25px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #1f78d1;
+      margin-bottom: 20px;
     }
 
     input[type="text"] {
+      width: 100%;
       padding: 10px;
-      width: 90%;
       margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #aaa;
-      transition: all 0.3s ease;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
     }
 
     button {
       padding: 10px 20px;
+      margin-top: 10px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
+      font-size: 14px;
       transition: transform 0.2s ease;
     }
 
@@ -50,79 +57,42 @@
       transform: scale(1.05);
     }
 
-    .btn-green {
-      background-color: green;
-      color: white;
-    }
-
-    .btn-blue {
-      background-color: dodgerblue;
-      color: white;
-    }
+    .btn-green { background-color: #2ecc71; color: #fff; }
+    .btn-blue  { background-color: #3498db; color: #fff; }
 
     .result {
       margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: darkgreen;
-      opacity: 0;
-      transform: translateY(20px);
+      font-size: 16px;
+      font-weight: 600;
+      color: #2c3e50;
       transition: all 0.5s ease;
-    }
-
-    .result.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #countdown {
-      font-size: 14px;
-      margin-top: 10px;
-      color: #444;
-    }
-
-    .wa-button {
-      margin-top: 15px;
     }
 
     #gameList {
       display: none;
-      opacity: 0;
-      transform: translateY(-10px);
+      margin-top: 20px;
       text-align: left;
-      background-color: white;
+      background: #f9f9f9;
       border-radius: 10px;
       padding: 15px;
-      margin-top: 20px;
-      max-height: 250px;
+      max-height: 200px;
       overflow-y: auto;
-      transition: all 0.5s ease;
+      border: 1px solid #ddd;
     }
 
     #gameList.show {
       display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #gameList h3 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    #gameList ol {
-      padding-left: 20px;
     }
 
     .loader {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid dodgerblue;
-      border-radius: 50%;
+      display: none;
+      margin: 20px auto;
       width: 40px;
       height: 40px;
+      border: 6px solid #eee;
+      border-top: 6px solid #3498db;
+      border-radius: 50%;
       animation: spin 1s linear infinite;
-      margin: 20px auto;
-      display: none;
     }
 
     @keyframes spin {
@@ -130,97 +100,69 @@
       100% { transform: rotate(360deg); }
     }
 
-    .time-info {
-      font-size: 13px;
-      margin-top: 5px;
-      color: #555;
-    }
-
     #logContainer {
-      background-color: #fff;
+      margin-top: 20px;
+      text-align: left;
+      background: #fefefe;
       border-radius: 8px;
       padding: 10px;
-      max-height: 150px;
-      overflow-y: auto;
       font-size: 13px;
-      border: 1px solid #ccc;
-      margin-top: 15px;
-      text-align: left;
-    }
-
-    #logContainer h4 {
-      margin-top: 0;
-      font-weight: 600;
+      border: 1px solid #ddd;
     }
 
     .log-item {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       border-bottom: 1px dashed #ccc;
-      padding-bottom: 4px;
+      padding-bottom: 5px;
+    }
+
+    #countdown, #lastUpdate {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
-
-  <h1>Prediksi Game Gacor Terkini</h1>
-
   <div class="container">
+    <h1>Prediksi Game Gacor</h1>
 
-    <button class="btn-green" onclick="tampilkanDaftarGame()">Cari Jenis Game</button>
-
+    <button class="btn-green" onclick="tampilkanDaftarGame()">🎮 Cari Jenis Game</button>
     <div id="gameList">
-      <h3>📋 Daftar Game Gacor</h3>
       <ol id="daftarIsiGame"></ol>
     </div>
 
-    <br>
-
     <form onsubmit="submitForm(); return false;">
-      <input type="text" id="username" placeholder="Nama Pengguna"><br>
-      <input type="text" id="phone" placeholder="Nomor WhatsApp"><br>
-      <button type="submit" class="btn-blue">Submit</button>
+      <input type="text" id="username" placeholder="Nama Pengguna" required>
+      <input type="text" id="phone" placeholder="Nomor WhatsApp" required>
+      <button type="submit" class="btn-blue">🔍 Submit</button>
     </form>
 
     <div class="loader" id="loader"></div>
     <div id="result" class="result"></div>
-    <div id="lastUpdate" class="time-info"></div>
-    <div id="countdown" class="time-info"></div>
+    <div id="lastUpdate"></div>
+    <div id="countdown"></div>
 
     <div id="logContainer"></div>
-    <button onclick="resetLog()" class="btn-blue" style="margin-top: 10px;">Reset Riwayat</button>
-
-    <h5 style="margin-bottom: 10px; margin-top: 25px;">Informasi lebih lengkap:</h5>
-    <a id="waLink" href="#" target="_blank" class="wa-button">
-      <button class="btn-green">WhatsApp</button>
-    </a>
-
+    <button onclick="resetLog()" class="btn-blue">♻️ Reset Riwayat</button>
   </div>
 
   <script>
-    const games = [
-      "Gates of Olympus", "Starlight Princess", "Sweet Bonanza", "Sugar Rush",
-      "Aztec Gems", "Wild West Gold", "Big Bass Bonanza", "The Dog House",
-      "Joker’s Jewels", "Fruit Party", "Bonanza Gold", "Floating Dragon",
-      "Power of Thor", "Mahjong Ways", "Lucky Neko", "Wild Bandito",
-      "Crypto Gold", "Dragon Hatch", "Super Fortune", "Lucky Fortune"
-    ];
+    const games = ["Gates of Olympus", "Starlight Princess", "Sweet Bonanza", "Sugar Rush", "Aztec Gems", "Wild West Gold", "Big Bass Bonanza", "The Dog House", "Joker’s Jewels", "Fruit Party"];
 
     function tampilkanDaftarGame() {
-      const daftar = document.getElementById("daftarIsiGame");
       const gameList = document.getElementById("gameList");
-      daftar.innerHTML = "";
+      const list = document.getElementById("daftarIsiGame");
+      list.innerHTML = "";
       games.forEach((game, i) => {
-        const li = document.createElement("li");
-        li.textContent = `${i + 1}. ${game}`;
-        daftar.appendChild(li);
+        list.innerHTML += `<li>${game}</li>`;
       });
       gameList.classList.add("show");
     }
 
-    function getTimeBlockString() {
+    function getTimeBlock() {
       const now = new Date();
-      const hourBlock = Math.floor(now.getHours() / 2);
-      return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}-block${hourBlock}`;
+      return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}-block${Math.floor(now.getHours() / 2)}`;
     }
 
     function getNextUpdateTime() {
@@ -229,66 +171,60 @@
       return new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextHour, 0, 0);
     }
 
+    function formatTime(date) {
+      return date.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    }
+
     function updateCountdown() {
-      const countdownEl = document.getElementById("countdown");
+      const el = document.getElementById("countdown");
       const now = new Date();
-      const nextUpdate = getNextUpdateTime();
-      const diff = nextUpdate - now;
-
-      if (diff <= 0) {
-        countdownEl.innerHTML = "⏳ Update prediksi segera...";
-        return;
-      }
-
-      const hours = String(Math.floor(diff / 3600000)).padStart(2, '0');
-      const minutes = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-      const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-
-      countdownEl.innerHTML = `⏳ Update berikutnya dalam: ${hours}:${minutes}:${seconds}`;
+      const diff = getNextUpdateTime() - now;
+      if (diff <= 0) return el.innerText = "⏳ Update prediksi segera...";
+      const h = String(Math.floor(diff / 3600000)).padStart(2, '0');
+      const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+      el.innerText = `⏳ Update berikutnya dalam: ${h}:${m}:${s}`;
     }
 
-    function formatWaktu(date) {
-      return date.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    function generateIndex(text) {
+      return [...text].reduce((a, c) => a + c.charCodeAt(0), 0) % games.length;
     }
 
-    function generateIndexFromText(text) {
-      let total = 0;
-      for (let i = 0; i < text.length; i++) {
-        total += text.charCodeAt(i);
-      }
-      return total % games.length;
+    function submitForm() {
+      const username = document.getElementById("username").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const loader = document.getElementById("loader");
+      const result = document.getElementById("result");
+      const lastUpdate = document.getElementById("lastUpdate");
+      loader.style.display = "block";
+      result.innerHTML = "";
+
+      setTimeout(() => {
+        loader.style.display = "none";
+        const key = username + phone + getTimeBlock();
+        const index = generateIndex(key);
+        const game = games[index];
+        const now = new Date();
+        result.innerHTML = `🎯 <b>${username}</b>, game gacor kamu: <span style='color:blue'>${game}</span>`;
+        lastUpdate.innerHTML = `🕒 Terakhir diperbarui: ${formatTime(now)}`;
+        updateLog(username, game, now);
+      }, 1200);
     }
 
-    function updateLog(username, selectedGame) {
-      const now = new Date();
-      const formattedTime = formatWaktu(now);
-      const entry = {
-        user: username,
-        game: selectedGame,
-        time: formattedTime
-      };
-
-      let log = JSON.parse(sessionStorage.getItem("predictionLog")) || [];
+    function updateLog(user, game, time) {
+      const entry = { user, game, time: formatTime(time) };
+      let log = JSON.parse(sessionStorage.getItem("predictionLog") || "[]");
       log.unshift(entry);
       sessionStorage.setItem("predictionLog", JSON.stringify(log));
       renderLog();
     }
 
     function renderLog() {
-      const logContainer = document.getElementById("logContainer");
-      const log = JSON.parse(sessionStorage.getItem("predictionLog")) || [];
-
-      if (log.length === 0) {
-        logContainer.innerHTML = '';
-        return;
-      }
-
-      let html = '<h4>📜 Riwayat Prediksi:</h4>';
-      log.forEach((item, i) => {
-        html += `<div class="log-item">#${i + 1} - <b>${item.user}</b>: 🎰 ${item.game} <br><small>🕒 ${item.time}</small></div>`;
-      });
-
-      logContainer.innerHTML = html;
+      const log = JSON.parse(sessionStorage.getItem("predictionLog") || "[]");
+      const container = document.getElementById("logContainer");
+      if (!log.length) return container.innerHTML = "";
+      container.innerHTML = "<h4>📜 Riwayat Prediksi</h4>" +
+        log.map((l, i) => `<div class='log-item'>#${i + 1} <b>${l.user}</b>: 🎰 ${l.game}<br><small>${l.time}</small></div>`).join("");
     }
 
     function resetLog() {
@@ -296,51 +232,9 @@
       renderLog();
     }
 
-    function submitForm() {
-      const username = document.getElementById("username").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const loader = document.getElementById("loader");
-      const resultDiv = document.getElementById("result");
-      const lastUpdateDiv = document.getElementById("lastUpdate");
-
-      if (!username || !phone) {
-        resultDiv.innerHTML = "❗ Mohon isi semua data.";
-        resultDiv.classList.add("show");
-        return;
-      }
-
-      loader.style.display = "block";
-      resultDiv.innerHTML = "";
-      lastUpdateDiv.innerHTML = "";
-      resultDiv.classList.remove("show");
-
-      setTimeout(() => {
-        loader.style.display = "none";
-
-        const inputKey = username + phone + getTimeBlockString();
-        const index = generateIndexFromText(inputKey);
-        const selectedGame = games[index];
-
-        resultDiv.innerHTML =
-          `🎯 Halo <b>${username}</b>, prediksi game gacor saat ini:<br><span style="color:blue;">🎰 ${selectedGame}</span>`;
-        resultDiv.classList.add("show");
-
-        const now = new Date();
-        lastUpdateDiv.innerHTML = `🕒 Update terakhir: ${formatWaktu(now)}`;
-
-        const pesan = `Halo ${username}, Prediksi game gacormu saat ini adalah 🎰 *${selectedGame}*`;
-        const waLink = `https://wa.me/6281234567890?text=${encodeURIComponent(pesan)}`;
-        document.getElementById("waLink").href = waLink;
-
-        updateLog(username, selectedGame);
-      }, 1500);
-    }
-
-    // Jalankan saat awal
     setInterval(updateCountdown, 1000);
     updateCountdown();
     renderLog();
   </script>
-
 </body>
 </html>
