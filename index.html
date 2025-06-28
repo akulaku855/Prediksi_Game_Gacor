@@ -147,14 +147,32 @@
     <div id="lastUpdate"></div>
     <div id="countdown"></div>
 
-    <div id="waLinkContainer" style="margin-top: 15px;"></div>
-
     <div id="logContainer"></div>
     <button onclick="resetLog()" class="btn-blue">♻️ Reset Riwayat</button>
   </div>
 
   <script>
-    const games = ["Gates of Olympus", "Starlight Princess", "Sweet Bonanza", "Sugar Rush", "Aztec Gems", "Wild West Gold", "Big Bass Bonanza", "The Dog House", "Joker’s Jewels", "Fruit Party"];
+const games = ["Gates of Olympus", "Starlight Princess", "Sweet Bonanza", "Sugar Rush", "Aztec Gems",
+  "Wild West Gold", "Wild West Gold Megaways", "Big Bass Bonanza", "Big Bass Splash", "The Dog House",
+  "The Dog House Megaways", "Joker’s Jewels", "Madame Destiny Megaways", "Fruit Party", "Fruit Party 2",
+  "Wild Wild Riches", "Bonanza Gold", "Floating Dragon", "Power of Thor Megaways", "Fire Strike",
+  "Fire Strike 2", "Mahjong Ways", "Mahjong Ways 2", "Mahjong Wins 3", "Lucky Neko",
+  "Caishen Wins", "Treasures of Aztec", "Wild Bandito", "Queen of Bounty", "Ganesha Fortune",
+  "Crypto Gold", "Leprechaun Riches", "Fortune Mouse", "Double Fortune", "Win Win Won",
+  "Dreams of Macau", "Opera Dynasty", "Dragon Hatch", "Dragon Legend", "Prosperity Lion",
+  "Fortune Rabbit", "Super Fortune", "Lucky Fortune", "Mining Bonanza", "Koi Gate",
+  "Hot Hot Fruit", "Fa Cai Shen", "5 Lucky Lions", "Fortune Dogs", "Dragon’s Throne",
+  "Egyptian Dreams", "Rolling Roger", "London Hunter", "Bird of Thunder", "Mega Moolah",
+  "Thunderstruck II", "Immortal Romance", "Avalon", "Break Da Bank Again", "Agent Jane Blonde",
+  "Playboy Gold", "Game of Thrones", "Jurassic Park", "Lucky Leprechaun", "Book of Dead",
+  "Legacy of Dead", "Moon Princess", "Rise of Olympus", "Reactoonz", "Reactoonz 2",
+  "Fire Joker", "Rise of Merlin", "Chronos Joker", "Wild Frames", "Fishing God",
+  "Fishing War", "Brothers Kingdom", "Heroes", "Fiery Sevens", "Magical Lamp",
+  "Golden Monkey", "Lucky Meow", "5 Fortune Stars", "Roma", "Roma II",
+  "Gates of Gatot Kaca 1000", "Piramid Bonanza", "Fortune Gods", "Wild Bounty Showdown", "Wild Cash",
+  "Starlight Princess 1000", "Jin Ji Bao Xi", "Zeus", "Lucky Tiger", "Win Win Neko", "Gold Rush"
+];
+
 
     function tampilkanDaftarGame() {
       const gameList = document.getElementById("gameList");
@@ -203,7 +221,7 @@
       const result = document.getElementById("result");
       const lastUpdate = document.getElementById("lastUpdate");
 
-      if (!/^\+?\d{11,14}$/.test(phone)) {
+      if (!/^\+?\d{9,15}$/.test(phone)) {
         alert("Nomor WhatsApp tidak valid!");
         return;
       }
@@ -211,7 +229,6 @@
       loader.style.display = "block";
       result.classList.remove("show");
       result.innerHTML = "";
-      document.getElementById("waLinkContainer").innerHTML = "";
 
       setTimeout(() => {
         loader.style.display = "none";
@@ -219,18 +236,10 @@
         const index = generateIndex(key);
         const game = games[index];
         const now = new Date();
-        result.innerHTML = `🎯 <b>${username}</b>, game gacor kamu: <span style='color:blue'>${game}</span>`;
+        result.innerHTML = `🎯 <b> Hallo ${username}</b>, Game gacor kamu: <span style='color:blue'>${game}</span>`;
         result.classList.add("show");
         lastUpdate.innerHTML = `🕒 Terakhir diperbarui: ${formatTime(now)}`;
         updateLog(username, game, now);
-
-        const adminPhone = "6281234567890"; // GANTI dengan nomor WA admin kamu
-        const pesan = `Halo Admin, ini hasil prediksi user:%0A%0A👤 Nama: ${username}%0A📱 Nomor: ${phone}%0A🎰 Prediksi Game Gacor: ${game}`;
-        const waLink = `https://wa.me/${adminPhone}?text=${pesan}`;
-        document.getElementById("waLinkContainer").innerHTML = `
-          <a href="${waLink}" target="_blank">
-            <button class="btn-green">📩 Kirim ke Admin</button>
-          </a>`;
       }, 1200);
     }
 
@@ -247,7 +256,7 @@
       const container = document.getElementById("logContainer");
       if (!log.length) return container.innerHTML = "";
       container.innerHTML = "<h4>📜 Riwayat Prediksi</h4>" +
-        log.map((l, i) => `<div class='log-item'>#${i + 1} <b>${l.user}</b>: 🎰 ${l.game}<br><small>${l.time}</small></div>`).join("");
+        log.map((l, i) => `<div class='log-item'>${i + 1} <b>${l.user}</b>: 🎰 ${l.game}<br><small>${l.time}</small></div>`).join("");
     }
 
     function resetLog() {
