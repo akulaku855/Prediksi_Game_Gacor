@@ -65,7 +65,11 @@
       font-size: 16px;
       font-weight: 600;
       color: #2c3e50;
-      transition: all 0.5s ease;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+    .result.show {
+      opacity: 1;
     }
 
     #gameList {
@@ -143,6 +147,8 @@
     <div id="lastUpdate"></div>
     <div id="countdown"></div>
 
+    <div id="waLinkContainer" style="margin-top: 15px;"></div>
+
     <div id="logContainer"></div>
     <button onclick="resetLog()" class="btn-blue">♻️ Reset Riwayat</button>
   </div>
@@ -196,8 +202,16 @@
       const loader = document.getElementById("loader");
       const result = document.getElementById("result");
       const lastUpdate = document.getElementById("lastUpdate");
+
+      if (!/^\+?\d{11,14}$/.test(phone)) {
+        alert("Nomor WhatsApp tidak valid!");
+        return;
+      }
+
       loader.style.display = "block";
+      result.classList.remove("show");
       result.innerHTML = "";
+      document.getElementById("waLinkContainer").innerHTML = "";
 
       setTimeout(() => {
         loader.style.display = "none";
@@ -206,8 +220,17 @@
         const game = games[index];
         const now = new Date();
         result.innerHTML = `🎯 <b>${username}</b>, game gacor kamu: <span style='color:blue'>${game}</span>`;
+        result.classList.add("show");
         lastUpdate.innerHTML = `🕒 Terakhir diperbarui: ${formatTime(now)}`;
         updateLog(username, game, now);
+
+        const adminPhone = "6281234567890"; // GANTI dengan nomor WA admin kamu
+        const pesan = `Halo Admin, ini hasil prediksi user:%0A%0A👤 Nama: ${username}%0A📱 Nomor: ${phone}%0A🎰 Prediksi Game Gacor: ${game}`;
+        const waLink = `https://wa.me/${adminPhone}?text=${pesan}`;
+        document.getElementById("waLinkContainer").innerHTML = `
+          <a href="${waLink}" target="_blank">
+            <button class="btn-green">📩 Kirim ke Admin</button>
+          </a>`;
       }, 1200);
     }
 
