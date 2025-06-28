@@ -2,101 +2,34 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prediksi Game Gacor</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      text-align: center;
-      padding-top: 30px;
-    }
-
-    h1 {
-      color: dodgerblue;
-    }
-
-    .container {
-      background-color: #e0e0e0;
-      max-width: 400px;
-      margin: auto;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      width: 90%;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #aaa;
-    }
-
-    .btn-green {
-      background-color: green;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .btn-blue {
-      background-color: dodgerblue;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: darkgreen;
-    }
-  </style>
+  <title>Form Gacor</title>
 </head>
 <body>
 
   <h1>Prediksi Game Gacor Terkini</h1>
 
-  <div class="container">
-    <button class="btn-green">Cari Jenis Game</button><br><br>
+  <form onsubmit="submitForm(); return false;">
+    <input type="text" id="username" placeholder="Nama Pengguna"><br><br>
+    <input type="text" id="whatsapp" placeholder="Nomor WhatsApp"><br><br>
+    <button type="submit">Submit</button>
+  </form>
 
-    <form onsubmit="submitForm(); return false;">
-      <input type="text" id="username" placeholder="Nama Pengguna"><br>
-      <input type="text" id="phone" placeholder="Nomor WhatsApp"><br>
-      <button type="submit" class="btn-blue">Submit</button>
-    </form>
-
-    <div id="result" class="result"></div>
-  </div>
+  <div id="result"></div>
 
   <script>
     function submitForm() {
-      const username = document.getElementById("username").value;
-      const phone = document.getElementById("phone").value;
+      const name = document.getElementById("username").value;
+      const wa = document.getElementById("whatsapp").value;
 
-      if (username === "" || phone === "") {
-        document.getElementById("result").innerHTML = "❗ Mohon isi semua data.";
+      if (name === "" || wa === "") {
+        document.getElementById("result").innerText = "Harap isi semua data.";
         return;
       }
 
-      // Prediksi Gacor Game Acak
-      const games = [
-         "Mahjong Wins 3, Piramid Bonanza, Starlight Princess, Gates Of Gatot Kaca 1000, Lucky Tiger",
-         "Lucky Neo, Wild Bandito, Mahjong Ways, Wild Bounty Showdown, Fortune Gods"
-	 "Mahjong Princess, Mining Bonanza, Lucky Fortune"
-	  "Win Win Neko, Roma II, Super Fortune"
+      const games = ["Wild Bandito", "Roma II", "Lucky Neo"];
+      const random = games[Math.floor(Math.random() * games.length)];
 
-
-      ];
-      const randomGame = games[Math.floor(Math.random() * games.length)];
-
-      document.getElementById("result").innerHTML =
-        `🔮 Halo <b>${username}</b>, prediksi game gacor untukmu hari ini: <br><span style="color:blue;">${randomGame}</span>`;
+      document.getElementById("result").innerHTML = `Halo ${name}, prediksi game: <b>${random}</b>`;
     }
   </script>
 
