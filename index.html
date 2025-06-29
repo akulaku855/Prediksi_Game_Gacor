@@ -42,7 +42,7 @@
       font-size: 14px;
     }
 
-    button {
+    button, a.btn-green, a.btn-blue {
       padding: 10px 20px;
       margin-top: 10px;
       border: none;
@@ -51,9 +51,11 @@
       cursor: pointer;
       font-size: 14px;
       transition: transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    button:hover {
+    button:hover, a.btn-green:hover, a.btn-blue:hover {
       transform: scale(1.05);
     }
 
@@ -148,31 +150,35 @@
     <div id="countdown"></div>
 
     <div id="logContainer"></div>
+
+    <!-- ✅ Tombol WhatsApp ke Admin -->
+    <a id="waBtn" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20melaporkan%20atau%20bertanya%20mengenai%20prediksi%20game%20gacor." 
+       target="_blank" class="btn-green">📩 Lapor Admin via WhatsApp</a>
+
     <button onclick="resetLog()" class="btn-blue">♻️ Reset Riwayat</button>
   </div>
 
   <script>
-const games = ["Gates of Olympus", "Starlight Princess", "Sweet Bonanza", "Sugar Rush", "Aztec Gems",
-  "Wild West Gold", "Wild West Gold Megaways", "Big Bass Bonanza", "Big Bass Splash", "The Dog House",
-  "The Dog House Megaways", "Joker’s Jewels", "Madame Destiny Megaways", "Fruit Party", "Fruit Party 2",
-  "Wild Wild Riches", "Bonanza Gold", "Floating Dragon", "Power of Thor Megaways", "Fire Strike",
-  "Fire Strike 2", "Mahjong Ways", "Mahjong Ways 2", "Mahjong Wins 3", "Lucky Neko",
-  "Caishen Wins", "Treasures of Aztec", "Wild Bandito", "Queen of Bounty", "Ganesha Fortune",
-  "Crypto Gold", "Leprechaun Riches", "Fortune Mouse", "Double Fortune", "Win Win Won",
-  "Dreams of Macau", "Opera Dynasty", "Dragon Hatch", "Dragon Legend", "Prosperity Lion",
-  "Fortune Rabbit", "Super Fortune", "Lucky Fortune", "Mining Bonanza", "Koi Gate",
-  "Hot Hot Fruit", "Fa Cai Shen", "5 Lucky Lions", "Fortune Dogs", "Dragon’s Throne",
-  "Egyptian Dreams", "Rolling Roger", "London Hunter", "Bird of Thunder", "Mega Moolah",
-  "Thunderstruck II", "Immortal Romance", "Avalon", "Break Da Bank Again", "Agent Jane Blonde",
-  "Playboy Gold", "Game of Thrones", "Jurassic Park", "Lucky Leprechaun", "Book of Dead",
-  "Legacy of Dead", "Moon Princess", "Rise of Olympus", "Reactoonz", "Reactoonz 2",
-  "Fire Joker", "Rise of Merlin", "Chronos Joker", "Wild Frames", "Fishing God",
-  "Fishing War", "Brothers Kingdom", "Heroes", "Fiery Sevens", "Magical Lamp",
-  "Golden Monkey", "Lucky Meow", "5 Fortune Stars", "Roma", "Roma II",
-  "Gates of Gatot Kaca 1000", "Piramid Bonanza", "Fortune Gods", "Wild Bounty Showdown", "Wild Cash",
-  "Starlight Princess 1000", "Jin Ji Bao Xi", "Zeus", "Lucky Tiger", "Win Win Neko", "Gold Rush"
-];
-
+    const games = ["Gates of Olympus", "Starlight Princess", "Sweet Bonanza", "Sugar Rush", "Aztec Gems",
+      "Wild West Gold", "Wild West Gold Megaways", "Big Bass Bonanza", "Big Bass Splash", "The Dog House",
+      "The Dog House Megaways", "Joker’s Jewels", "Madame Destiny Megaways", "Fruit Party", "Fruit Party 2",
+      "Wild Wild Riches", "Bonanza Gold", "Floating Dragon", "Power of Thor Megaways", "Fire Strike",
+      "Fire Strike 2", "Mahjong Ways", "Mahjong Ways 2", "Mahjong Wins 3", "Lucky Neko",
+      "Caishen Wins", "Treasures of Aztec", "Wild Bandito", "Queen of Bounty", "Ganesha Fortune",
+      "Crypto Gold", "Leprechaun Riches", "Fortune Mouse", "Double Fortune", "Win Win Won",
+      "Dreams of Macau", "Opera Dynasty", "Dragon Hatch", "Dragon Legend", "Prosperity Lion",
+      "Fortune Rabbit", "Super Fortune", "Lucky Fortune", "Mining Bonanza", "Koi Gate",
+      "Hot Hot Fruit", "Fa Cai Shen", "5 Lucky Lions", "Fortune Dogs", "Dragon’s Throne",
+      "Egyptian Dreams", "Rolling Roger", "London Hunter", "Bird of Thunder", "Mega Moolah",
+      "Thunderstruck II", "Immortal Romance", "Avalon", "Break Da Bank Again", "Agent Jane Blonde",
+      "Playboy Gold", "Game of Thrones", "Jurassic Park", "Lucky Leprechaun", "Book of Dead",
+      "Legacy of Dead", "Moon Princess", "Rise of Olympus", "Reactoonz", "Reactoonz 2",
+      "Fire Joker", "Rise of Merlin", "Chronos Joker", "Wild Frames", "Fishing God",
+      "Fishing War", "Brothers Kingdom", "Heroes", "Fiery Sevens", "Magical Lamp",
+      "Golden Monkey", "Lucky Meow", "5 Fortune Stars", "Roma", "Roma II",
+      "Gates of Gatot Kaca 1000", "Piramid Bonanza", "Fortune Gods", "Wild Bounty Showdown", "Wild Cash",
+      "Starlight Princess 1000", "Jin Ji Bao Xi", "Zeus", "Lucky Tiger", "Win Win Neko", "Gold Rush"
+    ];
 
     function tampilkanDaftarGame() {
       const gameList = document.getElementById("gameList");
