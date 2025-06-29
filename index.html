@@ -139,7 +139,7 @@
     </div>
 
     <form onsubmit="submitForm(); return false;">
-      <input type="text" id="username" placeholder="Nama Pengguna" required>
+      <input type="text" id="username" placeholder="Username" required>
       <input type="text" id="phone" placeholder="Nomor WhatsApp" required>
       <button type="submit" class="btn-blue">🔍 Submit</button>
     </form>
@@ -153,7 +153,7 @@
 
     <!-- ✅ Tombol WhatsApp ke Admin -->
     <a id="waBtn" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20melaporkan%20atau%20bertanya%20mengenai%20prediksi%20game%20gacor." 
-       target="_blank" class="btn-green">📩 Lapor Admin via WhatsApp</a>
+       target="_blank" class="btn-green">📩 Chat Admin</a>
 
     <button onclick="resetLog()" class="btn-blue">♻️ Reset Riwayat</button>
   </div>
@@ -227,10 +227,10 @@
       const result = document.getElementById("result");
       const lastUpdate = document.getElementById("lastUpdate");
 
-      if (!/^\+?\d{9,15}$/.test(phone)) {
-        alert("Nomor WhatsApp tidak valid!");
-        return;
-      }
+  if (!/^(\+?62|0)\d{9,13}$/.test(phone)) {
+  alert("Nomor WhatsApp tidak valid! ");
+  return;
+}
 
       loader.style.display = "block";
       result.classList.remove("show");
@@ -242,7 +242,7 @@
         const index = generateIndex(key);
         const game = games[index];
         const now = new Date();
-        result.innerHTML = `🎯 <b> Hallo ${username}</b>, Game gacor kamu: <span style='color:blue'>${game}</span>`;
+        result.innerHTML = `🎯 <b> Hallo ID ${username}</b>, Game gacor kamu: <span style='color:blue'>${game}</span>`;
         result.classList.add("show");
         lastUpdate.innerHTML = `🕒 Terakhir diperbarui: ${formatTime(now)}`;
         updateLog(username, game, now);
