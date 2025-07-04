@@ -4,20 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prediksi Game Gacor</title>
-<link rel="icon" href="https://akulaku855.github.io/Prediksi_Game_Gacor/icon1.png" type="image/png">
-
+  <link rel="icon" href="https://akulaku855.github.io/Prediksi_Game_Gacor/icon1.png" type="image/png">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
+    }
+
+    .page {
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
       min-height: 100vh;
     }
 
@@ -27,8 +28,10 @@
       max-width: 500px;
       border-radius: 12px;
       padding: 25px;
+      margin: 30px auto;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       text-align: center;
+      flex: 1;
     }
 
     h1 {
@@ -130,35 +133,56 @@
       color: #666;
       margin-top: 5px;
     }
+
+    footer {
+      padding: 20px;
+      background: #f4f6f8;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ddd;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Prediksi Game Gacor</h1>
+  <div class="page">
 
-    <button class="btn-green" onclick="tampilkanDaftarGame()">🎮 Cari Jenis Game</button>
-    <div id="gameList">
-      <ol id="daftarIsiGame"></ol>
+    <div class="container">
+      <h1>Prediksi Game Gacor</h1>
+
+      <button class="btn-green" onclick="tampilkanDaftarGame()">🎮 Cari Jenis Game</button>
+      <div id="gameList">
+        <ol id="daftarIsiGame"></ol>
+      </div>
+
+      <form onsubmit="submitForm(); return false;">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="text" id="phone" placeholder="Nomor WhatsApp" required>
+        <button type="submit" class="btn-blue">🔍 Submit</button>
+      </form>
+
+      <div class="loader" id="loader"></div>
+      <div id="result" class="result"></div>
+      <div id="lastUpdate"></div>
+      <div id="countdown"></div>
+      <div id="logContainer"></div>
+
+      <a id="waBtn" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20melaporkan%20atau%20bertanya%20mengenai%20prediksi%20game%20gacor." 
+        target="_blank" class="btn-green">📩 Chat Admin</a>
+
+      <button onclick="resetLog()" class="btn-blue">♻️ Reset Riwayat</button>
     </div>
 
-    <form onsubmit="submitForm(); return false;">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="text" id="phone" placeholder="Nomor WhatsApp" required>
-      <button type="submit" class="btn-blue">🔍 Submit</button>
-    </form>
+    <footer>
+      <p>© 2025 Prediksi Game Gacor. All Rights Reserved.</p>
+      <p>Developed by <a href="#">乂z̶y̶y̶y̶ </a></p>
+    </footer>
 
-    <div class="loader" id="loader"></div>
-    <div id="result" class="result"></div>
-    <div id="lastUpdate"></div>
-    <div id="countdown"></div>
-
-    <div id="logContainer"></div>
-
-    <!-- ✅ Tombol WhatsApp ke Admin -->
-    <a id="waBtn" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20melaporkan%20atau%20bertanya%20mengenai%20prediksi%20game%20gacor." 
-       target="_blank" class="btn-green">📩 Chat Admin</a>
-
-    <button onclick="resetLog()" class="btn-blue">♻️ Reset Riwayat</button>
   </div>
 
   <script>
@@ -230,10 +254,10 @@
       const result = document.getElementById("result");
       const lastUpdate = document.getElementById("lastUpdate");
 
-  if (!/^(\+?62|08)\d{9,12}$/.test(phone)) {
-  alert("Nomor WhatsApp tidak valid! ");
-  return;
-}
+      if (!/^(\+?62|08)\d{9,12}$/.test(phone)) {
+        alert("Nomor WhatsApp tidak valid!");
+        return;
+      }
 
       loader.style.display = "block";
       result.classList.remove("show");
@@ -245,7 +269,7 @@
         const index = generateIndex(key);
         const game = games[index];
         const now = new Date();
-        result.innerHTML = ` 🎉  <b> Hallo ID ${username}</b>, Game gacor kamu: <span style='color:blue'>${game}</span>`;
+        result.innerHTML = ` 🎉 <b>Hallo ID ${username}</b>, Game gacor kamu: <span style='color:blue'>${game}</span>`;
         result.classList.add("show");
         lastUpdate.innerHTML = `🕒 Terakhir diperbarui: ${formatTime(now)}`;
         updateLog(username, game, now);
@@ -277,10 +301,5 @@
     updateCountdown();
     renderLog();
   </script>
-
-<footer style="margin-top: 30px; padding: 20px; background: #f4f6f8; text-align: center; border-top: 1px solid #ddd; font-size: 14px; color: #555;">
-  <p>© 2025 Prediksi Game Gacor. All Rights Reserved.</p>
-  <p>Developed by <a href="#" style="color: #007bff; text-decoration: none;">Tim Kreatif</a></p>
-</footer>
 </body>
 </html>
