@@ -269,7 +269,7 @@
         const index = generateIndex(key);
         const game = games[index];
         const now = new Date();
-        result.innerHTML = ` 🎉 <b>Hallo ID ${username}</b>, Game gacor kamu: <span style='color:blue'>${game}</span>`;
+        result.innerHTML = ` 🎉 <b>Hallo ID ${username}</b>, Game gacor kamu Tepat dan akurat: <span style='color:blue'>${game}</span>`;
         result.classList.add("show");
         lastUpdate.innerHTML = `🕒 Terakhir diperbarui: ${formatTime(now)}`;
         updateLog(username, game, now);
